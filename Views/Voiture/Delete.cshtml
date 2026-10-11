@@ -1,0 +1,30 @@
+@model GestionVoitures.Models.Voiture
+
+@{
+    ViewData["Title"] = "Supprimer une voiture";
+}
+
+<h2 class="text-danger">Confirmer la suppression</h2>
+<p class="lead">Êtes-vous certain de vouloir supprimer ce véhicule du catalogue ?</p>
+
+<div class="card p-4 col-md-6 border-danger mb-4 shadow-sm">
+    <dl class="row mb-0">
+        <dt class="col-sm-4">Identifiant (ID) :</dt>
+        <dd class="col-sm-8">@Model.Id</dd>
+
+        <dt class="col-sm-4">Véhicule :</dt>
+        <dd class="col-sm-8"><strong>@Model.Marque @Model.Modele</strong></dd>
+
+        <dt class="col-sm-4">Année :</dt>
+        <dd class="col-sm-8">@Model.Annee</dd>
+
+        <dt class="col-sm-4">Tarif Journalier :</dt>
+        <dd class="col-sm-8">@Model.PrixJour.ToString("F2") DT</dd>
+    </dl>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Oui, Supprimer définitivement</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Annuler</a>
+</form>
